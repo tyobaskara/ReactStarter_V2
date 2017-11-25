@@ -1,0 +1,19 @@
+@import './vendor/bootstrap';
+@import './vendor/_reset';
+@import './component/navigation';
+
+.btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus {
+    outline: none;
+}
+
+.opOn {
+    opacity: 0;
+}
+.opOff {
+    opacity: 1;
+    transition: opacity .3s ease;
+}
+
+.wrapper-outside {
+    padding-top: 20px;
+}
