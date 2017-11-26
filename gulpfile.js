@@ -17,7 +17,7 @@ webpackStream = require('webpack-stream');
 var targetcss = path.join(__dirname, 'dist/assets/css');
 
 var paths = {
-    css: path.join(__dirname, 'src/assets/scss/index.scss'),
+    css: path.join(__dirname, 'src/scss/index.scss'),
     html: {
         src: path.join(__dirname, 'src/html/**/*.html'),
         dist: path.join(__dirname, 'dist/')
@@ -30,6 +30,11 @@ var paths = {
 
 // HTML task
 gulp.task('html', function() {
+    return gulp.src(paths.html.src)
+        .pipe(html())
+        .pipe(gulp.dest(paths.html.dist));
+});
+gulp.task('html:min', function() {
     return gulp.src(paths.html.src)
         .pipe(html())
         .pipe(htmlmin({collapseWhitespace: true}))
@@ -132,5 +137,5 @@ gulp.task('default', ['html', 'sass', 'react', 'watch', 'browser']);
 
 // minify files
 gulp.task('build', function() {
-    runs('html', 'sass:min', 'react:min')
-})
+    runs('html:min', 'sass:min', 'react:min');
+});

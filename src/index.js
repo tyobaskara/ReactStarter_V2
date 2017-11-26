@@ -7,6 +7,15 @@ import About from './jsx/about';
 import Ajax from './jsx/ajax';
 
 class App extends React.Component{
+    componentWillMount(){
+        document.body.setAttribute('class', 'opOn');
+    }
+    componentDidMount(){
+        setTimeout(function(){
+            document.body.setAttribute('class', 'opOff');
+        },250);
+    }
+
     render(){
         return(
             <Router history={browserHistory}>
@@ -17,15 +26,6 @@ class App extends React.Component{
                 </div>
             </Router>
         );
-    }
-
-    componentWillMount(){
-        document.body.setAttribute('class', 'opOn');
-    }
-    componentDidMount(){
-        setTimeout(function(){
-            document.body.setAttribute('class', 'opOff');
-        },250);
     }
 };
 
