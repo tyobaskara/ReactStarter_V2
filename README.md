@@ -1,15 +1,13 @@
 # ReactStarter_V2
 
-//first action
+/first action
 npm install
 
-//update dependencies
+/update dependencies
 npm i -g npm-check && npm-check -u
 
-//development mode
+/development mode
 npm run start
 
-//production mode
+/production mode
 npm run build
-
-// npm install -g npm-check && npm-check -u
