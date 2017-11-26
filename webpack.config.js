@@ -2,8 +2,8 @@ var path = require('path');
 var debug = process.env.NODE_ENV !== "production";
 var webpack = require('webpack');
 
-module.exports = {
-    devtool: debug ? "inline-sourcemap" : null,
+var config = {
+    devtool: "inline-sourcemap",
     output: {
         path: path.resolve(__dirname, 'dist/assets/js'),
         filename: 'bundle.js',
@@ -13,6 +13,7 @@ module.exports = {
         loaders: [
             {
                 test: /\.js$/,
+                exclude: /(node_modules|bower_components)/,
                 include: path.resolve(__dirname, 'src'),
                 loader: 'babel-loader',
                 query: {
@@ -22,9 +23,10 @@ module.exports = {
         ],
         
     },
-    plugins: debug ? [] : [
-        new webpack.optimize.DedupePlugin(),
-        new webpack.optimize.OccurenceOrderPlugin(),
+    plugins: [
+        new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false }),
     ],
 };
+
+module.exports = config

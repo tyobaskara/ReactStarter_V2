@@ -133,9 +133,10 @@ gulp.task('react:min', function() {
 })
 
 //GULP COMMAND
+// dev mode
 gulp.task('default', ['html', 'sass', 'react', 'watch', 'browser']);
 
-// minify files
+// prod mode - minify files
 gulp.task('build', function() {
     runs('html:min', 'sass:min', 'react:min');
 });
