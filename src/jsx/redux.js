@@ -7,7 +7,7 @@ import { createStore } from 'redux';
 
 //https://www.youtube.com/watch?v=ucd5x3Ka3gw Redux Tutorial
 
-//tutorial
+//tutorial basic --
 //REDUCER
 const reducer = function(state, action) {
     if(action.type === "INC") {
@@ -30,7 +30,7 @@ store.dispatch({type: "INC", payload: 1});
 store.dispatch({type: "INC", payload: 2});
 store.dispatch({type: "INC", payload: 22});
 store.dispatch({type: "DEC", payload: 10});
-//tutorial basic --//
+//--tutorial basic//
 
 class Redux extends React.Component {
 
