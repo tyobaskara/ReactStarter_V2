@@ -9,7 +9,7 @@ import { createStore } from 'redux';
 
 //tutorial basic --
 //REDUCER
-const reducer = function(state, action) {
+const reducer1 = function(state, action) {
     switch (action.type) {
         case "INC":
             return state + action.payload;
@@ -22,21 +22,21 @@ const reducer = function(state, action) {
 
 //STORE 
 //Connect to browser dev tool add this > window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-const store = createStore(reducer, 0, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const store1 = createStore(reducer1, 0, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
-store.subscribe(() => {
-    console.log("store changed", store.getState());
+store1.subscribe(() => {
+    //console.log("store changed", store.getState());
 });
 
-store.dispatch({type: "INC", payload: 1});
-store.dispatch({type: "INC", payload: 2});
-store.dispatch({type: "INC", payload: 22});
-store.dispatch({type: "DEC", payload: 10});
+store1.dispatch({type: "INC", payload: 1});
+store1.dispatch({type: "INC", payload: 2});
+store1.dispatch({type: "INC", payload: 22});
+store1.dispatch({type: "DEC", payload: 10});
 
-console.log('store = ' + store.getState());
+//console.log('store = ' + store.getState());
 //--tutorial basic//
 
-class Redux extends React.Component {
+class Redux1 extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -57,4 +57,4 @@ class Redux extends React.Component {
     }
 };
 
-export default Redux;
+export default Redux1;

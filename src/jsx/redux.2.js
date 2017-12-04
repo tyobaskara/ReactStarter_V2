@@ -38,21 +38,21 @@ const reducers = combineReducers({
 })
 //STORE 
 //Connect to browser dev tool add this > window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-const store = createStore(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const store2 = createStore(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 //--\\
 
-store.subscribe(() => {
-    console.log("store changed", store.getState());
+store2.subscribe(() => {
+    //console.log("store changed", store.getState());
 });
 
-store.dispatch({type: "CHANGE_NAME", payload: "Tyo"});
-store.dispatch({type: "CHANGE_AGE", payload: 17});
-store.dispatch({type: "CHANGE_AGE", payload: 27});
+store2.dispatch({type: "CHANGE_NAME", payload: "Tyo"});
+store2.dispatch({type: "CHANGE_AGE", payload: 17});
+store2.dispatch({type: "CHANGE_AGE", payload: 27});
 
-console.log(store.getState());
+//console.log(store.getState());
 //--tutorial basic//
 
-class Redux extends React.Component {
+class Redux2 extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -73,4 +73,4 @@ class Redux extends React.Component {
     }
 };
 
-export default Redux;
+export default Redux2;

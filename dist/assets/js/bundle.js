@@ -3347,54 +3347,59 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 //tutorial basic --
 //REDUCER
 //--//
-var userReducer = function userReducer() {
-    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+var reducer = function reducer() {
+    var initialState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
     var action = arguments[1];
 
-    switch (action.type) {
-        case "CHANGE_NAME":
-            {
-                state.name = action.payload;
-                break;
-            }
-        case "CHANGE_AGE":
-            {
-                state.age = action.payload;
-                break;
-            }
+    if (action.type === "INC") {
+        return initialState + 1;
+    } else if (action.type === "DEC") {
+        return initialState - 1;
+    } else if (action.type === "E") {
+        throw new Error("AAA!!!");
     }
-    return state;
+    return initialState;
 };
-//--\\
 
-//--//
-var tweetsReducer = function tweetsReducer() {
-    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-    var action = arguments[1];
-
-    return state;
+var logger = function logger(store) {
+    return function (next) {
+        return function (action) {
+            console.log("action fired", action);
+            next(action);
+        };
+    };
 };
-//--\\
 
-//--//
-var reducers = (0, _redux.combineReducers)({
-    user: userReducer,
-    tweets: tweetsReducer
-});
+var error = function error(store) {
+    return function (next) {
+        return function (action) {
+            try {
+                next(action);
+            } catch (e) {
+                console.log("AHHHH!!", e);
+            }
+        };
+    };
+};
+
+var middleware = (0, _redux.applyMiddleware)(logger, error);
 //STORE 
 //Connect to browser dev tool add this > window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-var store = (0, _redux.createStore)(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+var store = (0, _redux.createStore)(reducer, 1, middleware, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 //--\\
 
 store.subscribe(function () {
     console.log("store changed", store.getState());
 });
 
-store.dispatch({ type: "CHANGE_NAME", payload: "Tyo" });
-store.dispatch({ type: "CHANGE_AGE", payload: 17 });
-store.dispatch({ type: "CHANGE_AGE", payload: 27 });
+store.dispatch({ type: "INC" });
+store.dispatch({ type: "INC" });
+store.dispatch({ type: "INC" });
+store.dispatch({ type: "DEC" });
+store.dispatch({ type: "DEC" });
+store.dispatch({ type: "DEC" });
+store.dispatch({ type: "E" });
 
-console.log(store.getState());
 //--tutorial basic//
 
 var Redux = function (_React$Component) {
@@ -26360,7 +26365,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 //tutorial basic --
 //REDUCER
-var reducer = function reducer(state, action) {
+var reducer1 = function reducer1(state, action) {
     switch (action.type) {
         case "INC":
             return state + action.payload;
@@ -26373,30 +26378,30 @@ var reducer = function reducer(state, action) {
 
 //STORE 
 //Connect to browser dev tool add this > window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-var store = (0, _redux.createStore)(reducer, 0, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+var store1 = (0, _redux.createStore)(reducer1, 0, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
-store.subscribe(function () {
-    console.log("store changed", store.getState());
+store1.subscribe(function () {
+    //console.log("store changed", store.getState());
 });
 
-store.dispatch({ type: "INC", payload: 1 });
-store.dispatch({ type: "INC", payload: 2 });
-store.dispatch({ type: "INC", payload: 22 });
-store.dispatch({ type: "DEC", payload: 10 });
+store1.dispatch({ type: "INC", payload: 1 });
+store1.dispatch({ type: "INC", payload: 2 });
+store1.dispatch({ type: "INC", payload: 22 });
+store1.dispatch({ type: "DEC", payload: 10 });
 
-console.log('store = ' + store.getState());
+//console.log('store = ' + store.getState());
 //--tutorial basic//
 
-var Redux = function (_React$Component) {
-    _inherits(Redux, _React$Component);
+var Redux1 = function (_React$Component) {
+    _inherits(Redux1, _React$Component);
 
-    function Redux(props) {
-        _classCallCheck(this, Redux);
+    function Redux1(props) {
+        _classCallCheck(this, Redux1);
 
-        return _possibleConstructorReturn(this, (Redux.__proto__ || Object.getPrototypeOf(Redux)).call(this, props));
+        return _possibleConstructorReturn(this, (Redux1.__proto__ || Object.getPrototypeOf(Redux1)).call(this, props));
     }
 
-    _createClass(Redux, [{
+    _createClass(Redux1, [{
         key: 'render',
         value: function render() {
             return _react2.default.createElement(
@@ -26417,12 +26422,12 @@ var Redux = function (_React$Component) {
         }
     }]);
 
-    return Redux;
+    return Redux1;
 }(_react2.default.Component);
 
 ;
 
-exports.default = Redux;
+exports.default = Redux1;
 
 /***/ }),
 /* 113 */
@@ -26500,30 +26505,30 @@ var reducers = (0, _redux.combineReducers)({
 });
 //STORE 
 //Connect to browser dev tool add this > window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-var store = (0, _redux.createStore)(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+var store2 = (0, _redux.createStore)(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 //--\\
 
-store.subscribe(function () {
-    console.log("store changed", store.getState());
+store2.subscribe(function () {
+    //console.log("store changed", store.getState());
 });
 
-store.dispatch({ type: "CHANGE_NAME", payload: "Tyo" });
-store.dispatch({ type: "CHANGE_AGE", payload: 17 });
-store.dispatch({ type: "CHANGE_AGE", payload: 27 });
+store2.dispatch({ type: "CHANGE_NAME", payload: "Tyo" });
+store2.dispatch({ type: "CHANGE_AGE", payload: 17 });
+store2.dispatch({ type: "CHANGE_AGE", payload: 27 });
 
-console.log(store.getState());
+//console.log(store.getState());
 //--tutorial basic//
 
-var Redux = function (_React$Component) {
-    _inherits(Redux, _React$Component);
+var Redux2 = function (_React$Component) {
+    _inherits(Redux2, _React$Component);
 
-    function Redux(props) {
-        _classCallCheck(this, Redux);
+    function Redux2(props) {
+        _classCallCheck(this, Redux2);
 
-        return _possibleConstructorReturn(this, (Redux.__proto__ || Object.getPrototypeOf(Redux)).call(this, props));
+        return _possibleConstructorReturn(this, (Redux2.__proto__ || Object.getPrototypeOf(Redux2)).call(this, props));
     }
 
-    _createClass(Redux, [{
+    _createClass(Redux2, [{
         key: 'render',
         value: function render() {
             return _react2.default.createElement(
@@ -26544,12 +26549,12 @@ var Redux = function (_React$Component) {
         }
     }]);
 
-    return Redux;
+    return Redux2;
 }(_react2.default.Component);
 
 ;
 
-exports.default = Redux;
+exports.default = Redux2;
 
 /***/ })
 /******/ ]);
