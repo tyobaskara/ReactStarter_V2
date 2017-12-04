@@ -3,7 +3,7 @@ var webpack = require('webpack');
 //var debug = process.env.NODE_ENV !== "production";
 
 var config = {
-    devtool: "inline-sourcemap",
+    devtool: "cheap-module-source-map",
     output: {
         path: path.resolve(__dirname, 'dist/assets/js'),
         filename: 'bundle.js',

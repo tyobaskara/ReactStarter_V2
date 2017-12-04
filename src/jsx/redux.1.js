@@ -3,53 +3,37 @@ import ReactDOM from 'react-dom';
 import { Helmet } from 'react-helmet';
 import { Navigation } from './component/navigation';
 
-import { combineReducers, createStore } from 'redux';
+import { createStore } from 'redux';
 
 //https://www.youtube.com/watch?v=ucd5x3Ka3gw Redux Tutorial
 
 //tutorial basic --
 //REDUCER
-//--//
-const userReducer = (state={}, action) => {
-    switch(action.type) {
-        case "CHANGE_NAME": {
-            state.name = action.payload;
-            break;
-        }
-        case "CHANGE_AGE": {
-            state.age = action.payload;
-            break;
-        }
+const reducer = function(state, action) {
+    switch (action.type) {
+        case "INC":
+            return state + action.payload;
+        case "DEC":
+            return state - action.payload;
+        default:
+            return state;
     }
-    return state;
 };
-//--\\
 
-//--//
-const tweetsReducer = (state=[], action) => {
-    return state;
-};
-//--\\
-
-//--//
-const reducers = combineReducers({
-    user: userReducer,
-    tweets: tweetsReducer
-})
 //STORE 
 //Connect to browser dev tool add this > window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-const store = createStore(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
-//--\\
+const store = createStore(reducer, 0, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 store.subscribe(() => {
     console.log("store changed", store.getState());
 });
 
-store.dispatch({type: "CHANGE_NAME", payload: "Tyo"});
-store.dispatch({type: "CHANGE_AGE", payload: 17});
-store.dispatch({type: "CHANGE_AGE", payload: 27});
+store.dispatch({type: "INC", payload: 1});
+store.dispatch({type: "INC", payload: 2});
+store.dispatch({type: "INC", payload: 22});
+store.dispatch({type: "DEC", payload: 10});
 
-console.log(store.getState());
+console.log('store = ' + store.getState());
 //--tutorial basic//
 
 class Redux extends React.Component {

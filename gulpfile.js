@@ -90,7 +90,7 @@ gulp.task('react', function() {
     return gulp.src(paths.jsx.src)
     .pipe(
     webpackStream({
-        devtool: 'inline-sourcemap',
+        devtool: 'cheap-module-sourcemap',
         output: {
             path: path.resolve(__dirname, 'dist/assets/js'),
             filename: 'bundle.js',
@@ -115,8 +115,7 @@ gulp.task('react', function() {
                     test: /\.json$/,
                     loader: 'json-loader'
                 }
-            ],
-            
+            ]
         }
     })
     )
