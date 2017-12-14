@@ -1,15 +1,14 @@
-# ReactStarter_V2
-
-# first action
+# Install dependencies
 * npm install
 
-# update dependencies
-* npm i -g npm-check && npm-check -u
+# Update dependencies
+* npm i -g npm-check && npm-check -u (first time only)
+* npm run update (after first installed)
 
-# development mode
+# Run development mode
 * npm run start
 
-# production mode
+# Build production mode
 * npm run build
 
 # what's ?
