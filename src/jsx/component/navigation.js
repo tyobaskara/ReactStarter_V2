@@ -25,9 +25,9 @@ export class Navigation extends React.Component{
         });
 
         return (
-            <nav>
+            <nav className="nav">
                 <div className="container">
-                    <ul className="navMenu">
+                    <ul className="nav__menu">
                         {NavList}
                     </ul>
                 </div>

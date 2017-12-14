@@ -586,13 +586,13 @@ var Navigation = exports.Navigation = function (_React$Component) {
 
             return _react2.default.createElement(
                 'nav',
-                null,
+                { className: 'nav' },
                 _react2.default.createElement(
                     'div',
                     { className: 'container' },
                     _react2.default.createElement(
                         'ul',
-                        { className: 'navMenu' },
+                        { className: 'nav__menu' },
                         NavList
                     )
                 )
@@ -1459,7 +1459,7 @@ var Home = function (_React$Component) {
                 _react2.default.createElement(_navigation.Navigation, { active: 'Home' }),
                 _react2.default.createElement(
                     'div',
-                    { className: 'container-fluid wrapper-outside' },
+                    { className: 'container-fluid' },
                     _react2.default.createElement(
                         'div',
                         { className: 'container' },
@@ -3152,7 +3152,7 @@ var About = function (_React$Component) {
                 _react2.default.createElement(_navigation.Navigation, { active: 'About' }),
                 _react2.default.createElement(
                     'div',
-                    { className: 'container-fluid wrapper-outside' },
+                    { className: 'container-fluid' },
                     _react2.default.createElement(
                         'div',
                         { className: 'container' },
@@ -3254,7 +3254,7 @@ var Ajax = function (_React$Component) {
                 _react2.default.createElement(_navigation.Navigation, { active: 'Ajax' }),
                 _react2.default.createElement(
                     'div',
-                    { className: 'container-fluid wrapper-outside' },
+                    { className: 'container-fluid' },
                     _react2.default.createElement(
                         'div',
                         { className: 'container' },

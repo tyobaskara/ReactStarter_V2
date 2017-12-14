@@ -30,7 +30,7 @@ class About extends React.Component {
 
                 <Navigation active="About"/>
 
-                <div className="container-fluid wrapper-outside">
+                <div className="container-fluid">
                     <div className="container">
                         <Title title="About"/>
                         <SubTitle subtitle="This is about.."/>

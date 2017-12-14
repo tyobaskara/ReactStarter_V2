@@ -35,7 +35,7 @@ class Home extends React.Component {
 
                 <Navigation active="Home"/>
 
-                <div className="container-fluid wrapper-outside">
+                <div className="container-fluid">
                     <div className="container">
                         <Title title="Home"/>
                         <SubTitle subtitle="This is home.."/>

@@ -18,6 +18,7 @@ var targetcss = path.join(__dirname, 'dist/assets/css');
 
 var paths = {
     css: path.join(__dirname, 'src/scss/index.scss'),
+    cssWatch: path.join(__dirname, 'src/scss/**/*.scss'),
     html: {
         src: path.join(__dirname, 'src/html/**/*.html'),
         dist: path.join(__dirname, 'dist/')
@@ -63,14 +64,14 @@ return gulp.src(paths.css)
 
 //Watcher
 gulp.task('watch', function() {
-    watch(paths.css, function() { runs('sass', function() {
+    watch(paths.cssWatch, function() { runs('sass', function() {
         browserSync.reload()
       }); });
     watch(path.join(__dirname, 'src/html/**/*.html'), function() { runs('html', function() {
         browserSync.reload()
       }); });
     watch(paths.jsx.src, function() { runs('react', function() {
-    browserSync.reload()
+        browserSync.reload()
     }); });
 });
 

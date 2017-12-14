@@ -23,7 +23,7 @@ class Ajax extends React.Component {
 
                 <Navigation active="Ajax"/>
 
-                <div className="container-fluid wrapper-outside">
+                <div className="container-fluid">
                     <div className="container">
                         <h1>This is Ajax..</h1>
                         <ul className="list-ajax">

@@ -6796,30 +6796,30 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
-nav {
+.nav {
   background: rgba(7, 54, 148, 0.686);
   -webkit-box-shadow: 0px 1px 2px #0008ff, 0px 2px 5px #00ff91;
      -moz-box-shadow: 0px 1px 2px #0008ff, 0px 2px 5px #00ff91;
           box-shadow: 0px 1px 2px #0008ff, 0px 2px 5px #00ff91;
   position: relative; }
 
-.navMenu {
+.nav__menu {
   font-size: 0;
   text-align: center; }
-  .navMenu > * {
+  .nav__menu > * {
     font-size: initial; }
-  .navMenu > li {
+  .nav__menu > li {
     display: inline-block;
     vertical-align: middle;
     position: relative; }
-    .navMenu > li .active {
+    .nav__menu > li .active {
       font-weight: 600; }
-    .navMenu > li a {
+    .nav__menu > li a {
       display: inline-block;
       padding: 10px;
       color: white;
       font-size: 18px; }
-    .navMenu > li:after {
+    .nav__menu > li:after {
       content: '|';
       position: absolute;
       right: 0;
@@ -6830,7 +6830,7 @@ nav {
            -o-transform: translateY(-50%);
               transform: translateY(-50%);
       color: white; }
-    .navMenu > li:last-child:after {
+    .nav__menu > li:last-child:after {
       content: ''; }
 
 .btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus {
@@ -6846,7 +6846,10 @@ nav {
   -moz-transition: opacity .3s ease;
   transition: opacity .3s ease; }
 
-.wrapper-outside {
+.container {
   padding-top: 20px; }
+
+nav .container {
+  padding-top: 0; }
 
 /*# sourceMappingURL=maps/bundle.min.css.map */
