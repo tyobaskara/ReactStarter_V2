@@ -15,4 +15,4 @@
 * React helmet
 * Fetch Ajax
 * Redux Basic Concept
-* Gulp Combined with Webpack
+* Webpack Combined inside gulp
