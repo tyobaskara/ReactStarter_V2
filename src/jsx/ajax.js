@@ -4,35 +4,14 @@ import { Helmet } from 'react-helmet';
 import { Navigation } from './component/navigation';
 import {Title, SubTitle} from './home';
 
-const fetchComments = () => {
-    let url = 'https://jsonplaceholder.typicode.com/posts/1/comments';
-    let toAppend = document.getElementsByClassName('list-ajax')[0];
-
-    fetch(url).then(response => {
-        if (response.ok) {
-            return response.json();
-        }
-        throw new Error('Request failed!');
-    }, networkError => {
-        toAppend.innerHTML = networkError.message;
-        console.log(networkError.message)
-    }
-    ).then(jsonResponse => {
-        toAppend.innerHTML = '';
-        for(let i=0;i<jsonResponse.length;i++){
-            var markup = `
-                <div>name: ${jsonResponse[i].name}</div>
-                <div>email: ${jsonResponse[i].email}</div>
-                <div>comment: ${jsonResponse[i].body.replace(/\n/g, ' ')}</div>`;
-            var node = document.createElement('li');
-            node.innerHTML = markup;
-
-            toAppend.append(node);
-        }
-    });
-}
-
 class Ajax extends React.Component {
+    constructor(props){
+        super(props);
+
+        this.state = {
+            posts: []
+        }
+    }
     render() {
 
         return (
@@ -47,7 +26,17 @@ class Ajax extends React.Component {
                 <div className="container-fluid wrapper-outside">
                     <div className="container">
                         <h1>This is Ajax..</h1>
-                        <ul className="list-ajax">Loading...</ul>
+                        <ul className="list-ajax">
+                            <li>Loading...</li>
+                            {
+                                this.state.posts.map(post =>
+                                <li key={post.id}>
+                                    <div>name: {post.name}</div>
+                                    <div>email: {post.email}</div>
+                                    <div>comment: {post.body.replace(/\n/g, ' ')}</div>
+                                </li>
+                            )}
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -55,9 +44,30 @@ class Ajax extends React.Component {
     }
 
     componentDidMount(){
-        setTimeout(function(){
-            fetchComments();
-        },500);
+        const _this = this;
+        const url = 'https://jsonplaceholder.typicode.com/posts/1/comments';
+    
+        fetch(url).then(response => {
+            if (response.ok) {
+                return response.json();
+            }
+            throw new Error('Request failed!');
+        }, networkError => {
+            toAppend.innerHTML = networkError.message;
+            console.log(networkError.message);
+        }
+        ).then(jsonResponse => {
+            setTimeout(function(){
+                const block = document.getElementsByClassName('list-ajax')[0];
+                const list = block.getElementsByTagName('li');
+                block.removeChild(list[0]);
+
+                const posts = jsonResponse;
+                _this.setState({posts}, function () {
+                    //console.log(_this.state.posts);
+                });
+            },1000)
+        });
     }
 };
 

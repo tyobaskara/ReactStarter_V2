@@ -3220,37 +3220,18 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var fetchComments = function fetchComments() {
-    var url = 'https://jsonplaceholder.typicode.com/posts/1/comments';
-    var toAppend = document.getElementsByClassName('list-ajax')[0];
-
-    fetch(url).then(function (response) {
-        if (response.ok) {
-            return response.json();
-        }
-        throw new Error('Request failed!');
-    }, function (networkError) {
-        toAppend.innerHTML = networkError.message;
-        console.log(networkError.message);
-    }).then(function (jsonResponse) {
-        toAppend.innerHTML = '';
-        for (var i = 0; i < jsonResponse.length; i++) {
-            var markup = '\n                <div>name: ' + jsonResponse[i].name + '</div>\n                <div>email: ' + jsonResponse[i].email + '</div>\n                <div>comment: ' + jsonResponse[i].body.replace(/\n/g, ' ') + '</div>';
-            var node = document.createElement('li');
-            node.innerHTML = markup;
-
-            toAppend.append(node);
-        }
-    });
-};
-
 var Ajax = function (_React$Component) {
     _inherits(Ajax, _React$Component);
 
-    function Ajax() {
+    function Ajax(props) {
         _classCallCheck(this, Ajax);
 
-        return _possibleConstructorReturn(this, (Ajax.__proto__ || Object.getPrototypeOf(Ajax)).apply(this, arguments));
+        var _this2 = _possibleConstructorReturn(this, (Ajax.__proto__ || Object.getPrototypeOf(Ajax)).call(this, props));
+
+        _this2.state = {
+            posts: []
+        };
+        return _this2;
     }
 
     _createClass(Ajax, [{
@@ -3285,7 +3266,35 @@ var Ajax = function (_React$Component) {
                         _react2.default.createElement(
                             'ul',
                             { className: 'list-ajax' },
-                            'Loading...'
+                            _react2.default.createElement(
+                                'li',
+                                null,
+                                'Loading...'
+                            ),
+                            this.state.posts.map(function (post) {
+                                return _react2.default.createElement(
+                                    'li',
+                                    { key: post.id },
+                                    _react2.default.createElement(
+                                        'div',
+                                        null,
+                                        'name: ',
+                                        post.name
+                                    ),
+                                    _react2.default.createElement(
+                                        'div',
+                                        null,
+                                        'email: ',
+                                        post.email
+                                    ),
+                                    _react2.default.createElement(
+                                        'div',
+                                        null,
+                                        'comment: ',
+                                        post.body.replace(/\n/g, ' ')
+                                    )
+                                );
+                            })
                         )
                     )
                 )
@@ -3294,9 +3303,29 @@ var Ajax = function (_React$Component) {
     }, {
         key: 'componentDidMount',
         value: function componentDidMount() {
-            setTimeout(function () {
-                fetchComments();
-            }, 500);
+            var _this = this;
+            var url = 'https://jsonplaceholder.typicode.com/posts/1/comments';
+
+            fetch(url).then(function (response) {
+                if (response.ok) {
+                    return response.json();
+                }
+                throw new Error('Request failed!');
+            }, function (networkError) {
+                toAppend.innerHTML = networkError.message;
+                console.log(networkError.message);
+            }).then(function (jsonResponse) {
+                setTimeout(function () {
+                    var block = document.getElementsByClassName('list-ajax')[0];
+                    var list = block.getElementsByTagName('li');
+                    block.removeChild(list[0]);
+
+                    var posts = jsonResponse;
+                    _this.setState({ posts: posts }, function () {
+                        //console.log(_this.state.posts);
+                    });
+                }, 1000);
+            });
         }
     }]);
 
