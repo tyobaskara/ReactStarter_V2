@@ -11,7 +11,7 @@
 # Build production mode
 * npm run build
 
-# what's ?
+# What's ?
 * React helmet
 * Fetch Ajax
 * Redux Basic Concept
