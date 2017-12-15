@@ -3305,26 +3305,25 @@ var Ajax = function (_React$Component) {
         value: function componentDidMount() {
             var _this = this;
             var url = 'https://jsonplaceholder.typicode.com/posts/1/comments';
+            var block = document.getElementsByClassName('list-ajax')[0];
+            var list = block.getElementsByTagName('li');
 
             fetch(url).then(function (response) {
                 if (response.ok) {
                     return response.json();
                 }
+                list[0].innerHTML = 'Request failed!';
                 throw new Error('Request failed!');
             }, function (networkError) {
-                toAppend.innerHTML = networkError.message;
+                list[0].innerHTML = 'Request failed!';
                 console.log(networkError.message);
             }).then(function (jsonResponse) {
-                setTimeout(function () {
-                    var block = document.getElementsByClassName('list-ajax')[0];
-                    var list = block.getElementsByTagName('li');
-                    block.removeChild(list[0]);
-
-                    var posts = jsonResponse;
-                    _this.setState({ posts: posts }, function () {
-                        //console.log(_this.state.posts);
-                    });
-                }, 1000);
+                if (jsonResponse != null) {
+                    setTimeout(function () {
+                        block.removeChild(list[0]);
+                        _this.setState({ posts: jsonResponse });
+                    }, 1000);
+                }
             });
         }
     }]);

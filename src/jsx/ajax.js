@@ -46,27 +46,26 @@ class Ajax extends React.Component {
     componentDidMount(){
         const _this = this;
         const url = 'https://jsonplaceholder.typicode.com/posts/1/comments';
+        const block = document.getElementsByClassName('list-ajax')[0];
+        const list = block.getElementsByTagName('li');
     
         fetch(url).then(response => {
             if (response.ok) {
                 return response.json();
             }
+            list[0].innerHTML = 'Request failed!';
             throw new Error('Request failed!');
         }, networkError => {
-            toAppend.innerHTML = networkError.message;
+            list[0].innerHTML = 'Request failed!';
             console.log(networkError.message);
         }
         ).then(jsonResponse => {
-            setTimeout(function(){
-                const block = document.getElementsByClassName('list-ajax')[0];
-                const list = block.getElementsByTagName('li');
-                block.removeChild(list[0]);
-
-                const posts = jsonResponse;
-                _this.setState({posts}, function () {
-                    //console.log(_this.state.posts);
-                });
-            },1000)
+            if(jsonResponse != null) {
+                setTimeout(function(){
+                    block.removeChild(list[0]);
+                    _this.setState({posts: jsonResponse});
+                },1000);
+            }
         });
     }
 };
