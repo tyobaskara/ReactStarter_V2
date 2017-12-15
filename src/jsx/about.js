@@ -31,10 +31,13 @@ class About extends React.Component {
                 <Navigation active="About"/>
 
                 <div className="container-fluid">
+                    <div className="jumbotron">
+                        <div className="container text-center">
+                            <Title title="About"/>
+                            <SubTitle subtitle="This is about.."/>
+                        </div>
+                    </div>
                     <div className="container">
-                        <Title title="About"/>
-                        <SubTitle subtitle="This is about.."/>
-
                         <div className="skills">
                             <h2>Skills</h2>
                             <ul>

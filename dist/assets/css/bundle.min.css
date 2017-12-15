@@ -6796,6 +6796,9 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
+.container-fluid {
+  padding: 0; }
+
 .nav {
   background: rgba(7, 54, 148, 0.686);
   -webkit-box-shadow: 0px 1px 2px #0008ff, 0px 2px 5px #00ff91;
@@ -6816,9 +6819,9 @@ table {
       font-weight: 600; }
     .nav__menu > li a {
       display: inline-block;
-      padding: 10px;
+      padding: 15px;
       color: white;
-      font-size: 18px; }
+      font-size: 21px; }
     .nav__menu > li:after {
       content: '|';
       position: absolute;

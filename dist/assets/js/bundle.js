@@ -1410,8 +1410,7 @@ var Title = exports.Title = function Title(props) {
     return _react2.default.createElement(
         'h1',
         { className: 'title' },
-        props.title,
-        ' - Prasetya A. Baskara'
+        props.title
     );
 };
 var SubTitle = exports.SubTitle = function SubTitle(props) {
@@ -1462,9 +1461,17 @@ var Home = function (_React$Component) {
                     { className: 'container-fluid' },
                     _react2.default.createElement(
                         'div',
+                        { className: 'jumbotron' },
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'container text-center' },
+                            _react2.default.createElement(Title, { title: 'Home' }),
+                            _react2.default.createElement(SubTitle, { subtitle: 'This is home..' })
+                        )
+                    ),
+                    _react2.default.createElement(
+                        'div',
                         { className: 'container' },
-                        _react2.default.createElement(Title, { title: 'Home' }),
-                        _react2.default.createElement(SubTitle, { subtitle: 'This is home..' }),
                         _react2.default.createElement(
                             'div',
                             null,
@@ -3155,9 +3162,17 @@ var About = function (_React$Component) {
                     { className: 'container-fluid' },
                     _react2.default.createElement(
                         'div',
+                        { className: 'jumbotron' },
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'container text-center' },
+                            _react2.default.createElement(_home.Title, { title: 'About' }),
+                            _react2.default.createElement(_home.SubTitle, { subtitle: 'This is about..' })
+                        )
+                    ),
+                    _react2.default.createElement(
+                        'div',
                         { className: 'container' },
-                        _react2.default.createElement(_home.Title, { title: 'About' }),
-                        _react2.default.createElement(_home.SubTitle, { subtitle: 'This is about..' }),
                         _react2.default.createElement(
                             'div',
                             { className: 'skills' },
@@ -3257,12 +3272,17 @@ var Ajax = function (_React$Component) {
                     { className: 'container-fluid' },
                     _react2.default.createElement(
                         'div',
-                        { className: 'container' },
+                        { className: 'jumbotron' },
                         _react2.default.createElement(
-                            'h1',
-                            null,
-                            'This is Ajax..'
-                        ),
+                            'div',
+                            { className: 'container text-center' },
+                            _react2.default.createElement(_home.Title, { title: 'Ajax' }),
+                            _react2.default.createElement(_home.SubTitle, { subtitle: 'This is ajax..' })
+                        )
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'container' },
                         _react2.default.createElement(
                             'ul',
                             { className: 'list-ajax' },

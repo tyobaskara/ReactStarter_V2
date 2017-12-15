@@ -24,8 +24,13 @@ class Ajax extends React.Component {
                 <Navigation active="Ajax"/>
 
                 <div className="container-fluid">
+                    <div className="jumbotron">
+                        <div className="container text-center">
+                            <Title title="Ajax"/>
+                            <SubTitle subtitle="This is ajax.."/>
+                        </div>
+                    </div>
                     <div className="container">
-                        <h1>This is Ajax..</h1>
                         <ul className="list-ajax">
                             <li>Loading...</li>
                             {

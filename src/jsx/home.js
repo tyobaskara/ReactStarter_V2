@@ -5,7 +5,7 @@ import { Navigation } from './component/navigation';
 
 export const Title = (props) => {
     return (
-        <h1 className="title">{props.title} - Prasetya A. Baskara</h1>
+        <h1 className="title">{props.title}</h1>
     );
 }
 export const SubTitle = (props) => {
@@ -36,9 +36,13 @@ class Home extends React.Component {
                 <Navigation active="Home"/>
 
                 <div className="container-fluid">
+                    <div className="jumbotron">
+                        <div className="container text-center">
+                            <Title title="Home"/>
+                            <SubTitle subtitle="This is home.."/>
+                        </div>
+                    </div>
                     <div className="container">
-                        <Title title="Home"/>
-                        <SubTitle subtitle="This is home.."/>
                         <div>
                             <button type="button" className="btn btn-danger" onClick={this.testAlert}>button</button>
                         </div>
