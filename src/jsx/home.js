@@ -2,17 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Helmet } from 'react-helmet';
 import { Navigation } from './component/navigation';
-
-export const Title = (props) => {
-    return (
-        <h1 className="title">{props.title}</h1>
-    );
-}
-export const SubTitle = (props) => {
-    return (
-        <h2 className="subtitle">{props.subtitle}</h2>
-    )
-}
+import {Title} from './component/title';
+import {SubTitle} from './component/subtitle';
 
 class Home extends React.Component {
     constructor(props){
