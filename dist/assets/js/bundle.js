@@ -1465,8 +1465,8 @@ var Home = function (_React$Component) {
                         _react2.default.createElement(
                             'div',
                             { className: 'container text-center' },
-                            _react2.default.createElement(Title, { title: 'Home' }),
-                            _react2.default.createElement(SubTitle, { subtitle: 'This is home..' })
+                            _react2.default.createElement(Title, { title: 'Prasetya A. Baskara' }),
+                            _react2.default.createElement(SubTitle, { subtitle: 'Front End Developer' })
                         )
                     ),
                     _react2.default.createElement(

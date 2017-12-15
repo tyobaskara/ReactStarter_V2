@@ -38,8 +38,8 @@ class Home extends React.Component {
                 <div className="container-fluid">
                     <div className="jumbotron">
                         <div className="container text-center">
-                            <Title title="Home"/>
-                            <SubTitle subtitle="This is home.."/>
+                            <Title title="Prasetya A. Baskara"/>
+                            <SubTitle subtitle="Front End Developer"/>
                         </div>
                     </div>
                     <div className="container">
