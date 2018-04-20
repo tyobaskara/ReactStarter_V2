@@ -91,7 +91,7 @@ gulp.task('react', function() {
     return gulp.src(paths.jsx.src)
     .pipe(
     webpackStream({
-        devtool: 'cheap-module-sourcemap',
+        devtool: 'cheap-module-eval-sourcemap',
         output: {
             path: path.resolve(__dirname, 'dist/assets/js'),
             filename: 'bundle.js',
@@ -102,10 +102,7 @@ gulp.task('react', function() {
                 {
                     test: /\.js$/,
                     include: path.resolve(__dirname, 'src'),
-                    loader: 'babel-loader',
-                    query: {
-                        presets: ['react', 'env']
-                    }
+                    loader: 'babel-loader'
                 },
                 {
                     test: /\.(png|jpg|woff|woff2|svg|eot|gif|ttf)$/,

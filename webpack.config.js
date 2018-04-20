@@ -15,17 +15,17 @@ var config = {
                 test: /\.js$/,
                 exclude: /(node_modules|bower_components)/,
                 include: path.resolve(__dirname, 'src'),
-                loader: 'babel-loader',
-                query: {
-                    presets: ['react', 'env']
-                }
+                loader: 'babel-loader'
             }
         ],
         
     },
     plugins: [
         new webpack.optimize.OccurrenceOrderPlugin(),
-        new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false }),
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV': JSON.stringify('production')
+        }),
+        new webpack.optimize.UglifyJsPlugin({ mangle: true, sourcemap: false }),
     ],
 };
 

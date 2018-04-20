@@ -11,8 +11,15 @@
 # Build production mode
 * npm run build
 
+# Deploy in bash command
+* netlify deploy
+* choose sites
+* path to dist/
+
+# Deploy
+* npm run deploy
+
 # What's ?
 * React helmet
-* Fetch Ajax
-* Redux Basic Concept
+* React Router
 * Webpack Combined inside gulp
